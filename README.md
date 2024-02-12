@@ -1,5 +1,4 @@
 # Digit-gorw
-# Digit-grow
 
 Digit-grow is a project aimed at helping businesses and individuals grow their social media presence quickly by providing a platform to purchase followers for various social media platforms.
 

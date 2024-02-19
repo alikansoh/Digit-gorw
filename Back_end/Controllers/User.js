@@ -33,16 +33,12 @@ export const getUser = async (req, res) => {
 };
 
 export const register = async (req, res) => {
-  const { username, password, confirmPassword, email, firstName, lastName,phone } =
+  const {  password, confirmPassword, email, firstName, lastName,phone } =
     req.body;
   const hashedPassword = await bcrypt.hash(password, 10); // Hash the password
 
   try {
-    // Check if the username is already in use
-    const existingUsername = await User.findOne({ username });
-    if (existingUsername) {
-      return res.status(400).json({ message: "Username already in use!" });
-    }
+  
 
     // Check if the email is already in use
     const existingEmail = await User.findOne({ email });
@@ -62,7 +58,6 @@ export const register = async (req, res) => {
 
     // Create the user
     const user = await User.create({
-      username,
       password: hashedPassword,
       email,
       firstName,

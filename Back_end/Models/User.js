@@ -1,18 +1,16 @@
 import mongoose from "mongoose";
-
+import bcrypt from "bcrypt";
 const UserSchema = new mongoose.Schema(
   {
-    username: {
-      type: String,
-      required: true,
-      unique: true,
-    },
+   
     password: {
       type: String,
     },
     email: {
       type: String,
       required: true,
+      unique: true,
+
     },
     firstName: {
       type: String,
@@ -34,5 +32,12 @@ const UserSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+UserSchema.methods.isValidPassword = async function(candidatePassword) {
+  try {
+      return await bcrypt.compare(candidatePassword, this.password);
+  } catch (error) {
+      throw new Error(error);
+  }
+};
 
 export default mongoose.model("User", UserSchema);

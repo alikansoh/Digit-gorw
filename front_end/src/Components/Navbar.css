@@ -1,0 +1,35 @@
+.navbar {
+  align-content: center;
+  justify-content: center;
+  display: flex;
+  height: 170px;
+  width: 100%;
+  background-color: black;
+  gap: 80px;
+}
+
+.center-logo {
+  height: 100%;
+}
+
+.navbar ul {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+}
+.navbar li {
+  list-style: none;
+}
+.navbar li a:hover {
+  color: #d75371;
+  text-decoration: none;
+}
+.navbar li a {
+  text-decoration: none;
+  color: white;
+}

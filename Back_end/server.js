@@ -13,15 +13,19 @@ import Package from "./Routes/Package.js";
 import Order from "./Routes/Order.js";
 import authRoutes from './Routes/auth-routes.js';
 import passportSetup from "./Middlewares/Oauth.js";
-
-dotenv.config();
+import { createProxyMiddleware } from "http-proxy-middleware";
 
 const PORT = process.env.PORT || 4000;
 const app = express();
 
 app.use(cookieParser());
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5173',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true, // Allow cookies to be sent from the frontend
+
+}));
 
 // Session middleware setup
 app.use(

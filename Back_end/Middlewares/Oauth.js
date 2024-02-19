@@ -65,7 +65,7 @@ const passportSetup = () => {
               firstName: profile.name.givenName,
               lastName: profile.name.familyName,
               username: profile.emails[0].value.split('@')[0],
-              balance: 0,
+              balance:  0,
               phone: '',
             });
           }

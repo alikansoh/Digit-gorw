@@ -20,6 +20,9 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*'); 
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+
   res.json({ message: 'Login successful', user: req.user });
 
   res.redirect('/');

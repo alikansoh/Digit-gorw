@@ -18,15 +18,18 @@ import { createProxyMiddleware } from "http-proxy-middleware";
 const PORT = process.env.PORT || 4000;
 const app = express();
 
-// app.use(cookieParser());
-// app.use(express.json());
+app.use(cookieParser());
+app.use(express.json());
 // app.use(cors({
 //   origin: '*',
 //   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
 //   credentials: true,
 // }));
-app.use(cors());
-
+app.use(cors({
+  origin: '*', // Allow all origins
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], // Allowed methods
+  credentials: true, // Allow credentials
+ }));
 // Session middleware setup
 app.use(
   session({

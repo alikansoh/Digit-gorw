@@ -18,16 +18,14 @@ import { createProxyMiddleware } from "http-proxy-middleware";
 const PORT = process.env.PORT || 4000;
 const app = express();
 
-app.use(cookieParser());
-app.use(express.json());
-app.use(cors({
-  origin: 'https://helpful-bienenstitch-6eda71.netlify.app',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-  credentials: true,
-}));
-app.use(cors({
-  origin: 'http://localhost:5173'
-}));
+// app.use(cookieParser());
+// app.use(express.json());
+// app.use(cors({
+//   origin: '*',
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+//   credentials: true,
+// }));
+app.use(cors());
 
 // Session middleware setup
 app.use(

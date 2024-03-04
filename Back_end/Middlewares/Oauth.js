@@ -54,7 +54,7 @@ const passportSetup = () => {
       },
       async (accessToken, refreshToken, profile, done) => {
         try {
-          console.log('Access Token:', accessToken); // Log the access token
+          console.log('Access Token:', accessToken); 
 
           let user = await User.findOne({ googleId: profile.id });
 

@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import passport from "passport";
 import session from "express-session";
 import cookieParser from "cookie-parser";
-
+import axios from "axios";
 import Admin from "./Routes/Admin.js";
 import User from "./Routes/User.js";
 import Service from "./Routes/Service.js";
@@ -22,9 +22,11 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(cors({
   origin: 'http://localhost:5173',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true, // Allow cookies to be sent from the frontend
-
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  credentials: true,
+}));
+app.use(cors({
+  origin: 'http://localhost:5173'
 }));
 
 // Session middleware setup
@@ -35,6 +37,19 @@ app.use(
     saveUninitialized: false,
   })
 );
+
+app.post("/api/v2", async (req, res) => {
+  try {
+    const response = await axios.post("https://justanotherpanel.com/api/v2", {
+      action: "services",
+      key: "c333f403b31f0c5c35d52a34afdd90f0",
+    });
+    res.json(response.data);
+  } catch (error) {
+    console.error("Error proxying request:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 // Initialize Passport and use Passport session middleware
 app.use(passport.initialize());

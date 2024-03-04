@@ -12,26 +12,28 @@ const OrderSchema = new Schema(
     Total_price: {
       type: Number,
     },
-   
-    services: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Service",
-        autopopulate: true,
+
+    services: { 
+      type: Number,
+       required: true 
       },
-    ],
-    packages: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Package",
-        autopopulate: true,
-      }
-    ],
+
     user: {
       type: Schema.Types.ObjectId,
       ref: "User",
       autopopulate: true,
       required: true,
+    },
+    quantity: {
+      type: Number,
+      required: true,
+    },
+
+    orderID: {
+      type: String,
+    },
+    link: {
+      type: String,
     },
   },
   { timestamps: true }

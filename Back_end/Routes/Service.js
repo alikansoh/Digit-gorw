@@ -5,10 +5,10 @@ import { requireAuth } from '../Middlewares/Jwt.js'
 const router = express.Router();
 const { isAuthenticated } = passportSetup();
 
-router.post('/', requireAuth, serviceController.createservice);
+router.post('/',  serviceController.createservice);
 router.get('/', serviceController.getServices);
 router.get('/:id', isAuthenticated, serviceController.getService);
-router.put('/:id', requireAuth, serviceController.updateservice);
-router.delete('/:id', requireAuth, serviceController.deleteservice);
+router.patch('/:id', serviceController.updateservice);
+router.delete('/:id', serviceController.deleteservice);
 
 export default router;

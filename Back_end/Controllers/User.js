@@ -26,52 +26,58 @@ export const getUser = async (req, res) => {
       return res.status(404).json({ error: "user not found!" });
     }
 
-    res.status(200).json({ admin });
+    res.status(200).json({ user });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
 
 export const register = async (req, res) => {
-  const {  password, confirmPassword, email, firstName, lastName,phone } =
-    req.body;
-  const hashedPassword = await bcrypt.hash(password, 10); // Hash the password
-
-  try {
-  
-
-    // Check if the email is already in use
-    const existingEmail = await User.findOne({ email });
-    if (existingEmail) {
-      return res.status(400).json({ message: "Email already in use!" });
-    }
-
-    // Check if the email follows a valid structure
-    if (!validator.isEmail(email)) {
-      return res.status(400).json({ message: "Invalid email format!" });
-    }
-
-    // Check if the password and confirmPassword match
-    if (password !== confirmPassword) {
-      return res.status(400).json({ message: "Passwords do not match!" });
-    }
-
-    // Create the user
-    const user = await User.create({
-      password: hashedPassword,
-      email,
-      firstName,
-      lastName,
-      balance: 0,
-      phone
-    });
-
-    res.status(201).json({ message: "User created successfully!", user });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: error.message });
+  const { password, confirmPassword, email, firstName, lastName, phone } = req.body;
+ 
+  // Check if the password and confirmPassword match
+  if (password !== confirmPassword) {
+     return res.status(400).json({ message: "Passwords do not match!" });
   }
-};
+ 
+  // Check if the email follows a valid structure
+  if (!validator.isEmail(email)) {
+     return res.status(400).json({ message: "Invalid email format!" });
+  }
+ 
+  try {
+     // Check if the email is already in use
+     const existingEmail = await User.findOne({ email });
+     if (existingEmail) {
+       return res.status(400).json({ message: "Email already in use!" });
+     }
+ 
+     // Hash the password
+     const hashedPassword = await bcrypt.hash(password, 10);
+ 
+     // Create the user
+     const user = await User.create({
+       password: hashedPassword,
+       email,
+       firstName,
+       lastName,
+       balance: 0,
+       phone
+     });
+ 
+     // Generate a JWT token
+     const secretKey = process.env.JWT_SECRET;
+     if (!secretKey) {
+       throw new Error("JWT secret key not configured.");
+     }
+     const token = jwt.sign({ id: user._id }, secretKey, { expiresIn: "1h" });
+ 
+     res.status(201).json({ message: "User created successfully!", user, token });
+  } catch (error) {
+     console.error(error);
+     res.status(500).json({ error: error.message });
+  }
+ };
 
 export const login = async (req, res) => {
   const { usernameOrEmail, password } = req.body;

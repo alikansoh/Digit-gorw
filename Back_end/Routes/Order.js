@@ -8,5 +8,5 @@ router.get('/:id', Order.getOrder);
 router.post('/', Order.createOrder)
 router.put('/:id',requireAuth, Order.updateOrder);
 router.delete('/:id', requireAuth,Order.deleteOrder);
-
+router.get('/orderbyuser/:userID', Order.orderByUserId);
 export default router;

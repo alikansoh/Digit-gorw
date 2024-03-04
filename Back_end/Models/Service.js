@@ -2,8 +2,8 @@ import mongoose from "mongoose";
 
 const ServiceSchema = new mongoose.Schema(
   {
-    serviceAPI_id:{
-      type: Number,
+    service:{
+      type: String,
       required: true,
       unique: true,
     },

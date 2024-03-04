@@ -32,7 +32,7 @@ export const getService = async (req, res) => {
 
 export const createservice = async (req, res) => {
   const {
-    serviceAPI_id,
+    service,
     name,
     type,
     min,
@@ -45,10 +45,17 @@ export const createservice = async (req, res) => {
     refill,
     cancel,
   } = req.body;
-  let our_price = rate * (1 + profit / 100); 
+  let our_price = rate * (1 + profit /  100);  
+
+  // Check if a service with the same name already exists
+  const existingService = await Service.findOne({ service });
+  if (existingService) {
+    return res.status(400).json({ error: "this service already exists." });
+  }
+
   try {
     const newService = new Service({
-      serviceAPI_id,
+      service,
       name,
       type,
       min,
@@ -71,6 +78,7 @@ export const createservice = async (req, res) => {
   }
 };
 
+
 export const updateservice = async (req, res) => { 
   try {
     const { id } = req.params;
@@ -85,13 +93,26 @@ export const updateservice = async (req, res) => {
       return res.status(404).json({ error: "Service not found!" });
     }
 
+    // Assuming rate is stored in the service document
+    const rate = service.rate;
+
     const updatedServiceData = req.body;
 
-    // Recalculate our_price if profit is updated
     if ('profit' in updatedServiceData) {
-      const { rate, profit } = updatedServiceData;
-      updatedServiceData.our_price = rate * (1 + profit / 100);
+      const profit = parseFloat(updatedServiceData.profit);
+      
+      if (isNaN(profit)) {
+        return res.status(400).json({ error: "Profit must be a valid number!" });
+      }
+    
+      updatedServiceData.our_price = parseFloat(rate * (1 + profit / 100));
+      if (isNaN(updatedServiceData.our_price)) {
+        return res.status(400).json({ error: "Error calculating our_price!" });
+      }
+    } else {
+      return res.status(400).json({ error: "Profit field is required!" });
     }
+    
 
     const updatedService = await Service.findByIdAndUpdate(id, updatedServiceData, { new: true });
 

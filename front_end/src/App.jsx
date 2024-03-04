@@ -1,20 +1,96 @@
-// App.js
-import React from 'react';
-import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './Pages/Login/Login';
-import Home from './Pages/Home/Home';
-import ProtectedRoute from './ProtectedRoute';
-
+import React from "react";
+import "./App.css";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+} from "react-router-dom";
+import Navbar from "./Components/Navbar"; // Import the Navbar component
+import Login from "./Pages/Login/Login";
+import Home from "./Pages/Home/Home";
+import ProtectedRoute from "./ProtectedRoute";
+import Dashboard from "./Pages/Dashborad/Dashboard";
+import OurServices from "./Pages/Dashborad/OurServices";
+import "mdb-react-ui-kit/dist/css/mdb.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "./Pages/Home/Home.css";
+import Service from "./Pages/Services/Service";
+import Order from "./Pages/Services/Order";
+import ContactUs from "./Pages/ContactUs/ContactUs";
+import AboutUs from "./Pages/AboutUs/AboutUs";
+import Register from "./Pages/Register";
+import Footer from "./Components/Footer";
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
-        {/* Use ProtectedRoute for protected routes */}
-        <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+        <Route path="/Register" element={<Register />} />
+
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Navbar />
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/services"
+          element={
+            <ProtectedRoute>
+              <Navbar />
+              <Service />
+            </ProtectedRoute>
+          }
+        />
+         <Route
+          path="/ContactUs"
+          element={
+            <ProtectedRoute>
+              <Navbar />
+              <ContactUs />
+              <Footer />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/AboutUs"
+          element={
+            <ProtectedRoute>
+              <Navbar />
+              <AboutUs />
+              <Footer />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/orders/:userId"
+          element={
+            <ProtectedRoute>
+              <Order />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/services"
+          element={
+            <ProtectedRoute>
+              <OurServices />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 

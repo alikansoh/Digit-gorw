@@ -1,18 +1,16 @@
-.navbar {
+.navbar1 {
   align-content: center;
   justify-content: center;
   display: flex;
   height: 170px;
   width: 100%;
-  background-color: black;
+  background-color: #111011;
   gap: 80px;
+  margin-bottom: 70px;
+  box-sizing: content-box;
 }
 
-.center-logo {
-  height: 100%;
-}
-
-.navbar ul {
+.navbar1 ul {
   color: white;
   display: flex;
   justify-content: center;
@@ -22,14 +20,71 @@
   padding: 0;
   font-size: 18px;
 }
-.navbar li {
+.navbar1 li {
   list-style: none;
 }
-.navbar li a:hover {
+.navbar1 li a:hover {
   color: #d75371;
   text-decoration: none;
 }
-.navbar li a {
+.navbar1 li a {
   text-decoration: none;
   color: white;
 }
+
+@media only screen and (max-width: 700px) {
+  .navbar1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 100%;
+    background-color: #111011;
+    padding: 20px 0;
+    margin-bottom: 50px;
+    gap: 5px;
+  }
+
+  .logo-navbar1 {
+    height: 75px;
+  }
+
+  .navbar1 ul {
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    padding: 0;
+    font-size: 14px;
+  }
+
+  .navbar1 li {
+    list-style: none;
+  }
+
+  .navbar1 li a:hover {
+    color: #d75371;
+    text-decoration: none;
+  }
+
+  .navbar1 li a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .navbar1 ul {
+    flex-direction: row;
+    gap: 15px;
+  }
+}
+.active-style {
+  color: #d75371 !important;
+}
+/* Navbar.css */
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+

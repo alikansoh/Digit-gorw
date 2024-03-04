@@ -1,17 +1,21 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import Logo from "../assets/login-mobile.png";
-import { Link } from "react-router-dom";
 
 function Navbar() {
+  // Function to check screen size
+  const isSmallScreen = window.innerWidth <= 768;
+
   return (
-    <nav className="navbar">
-      <img src={Logo} alt="Logo" className="logo-navbar" />
+    <nav className="navbar1">
+      {/* Render logo only if it's not a small screen */}
+      {!isSmallScreen && <img src={Logo} alt="Logo" className="logo-navbar1" />}
       <ul className="right menu">
-        <li><Link>Home</Link></li>
-        <li><Link>Services</Link></li>
-        <li><Link>Contact Us</Link></li>
-        <li><Link>About Us</Link></li>
+        <li><NavLink exact to={"/"} className={({isActive}) => (isActive ? "active-style" : 'none')} >Home</NavLink></li>
+        <li><NavLink to={"/services"}className={({isActive}) => (isActive ? "active-style" : 'none')} >Services</NavLink></li>
+        <li><NavLink to={"/contactUs"} className={({isActive}) => (isActive ? "active-style" : 'none')}>Contact Us</NavLink></li>
+        <li><NavLink to={"/aboutUS"}  className={({isActive}) => (isActive ? "active-style" : 'none')} >About Us</NavLink></li>
       </ul>
     </nav>
   );

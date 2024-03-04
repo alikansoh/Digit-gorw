@@ -43,9 +43,11 @@ function Login() {
 
   const handleGoogleLogin =async () => {
     try {
-      const response = await axios.get('http://localhost:4000/auth/google');
+      const response = await instance.get('/auth/google');
       console.log(response);
-      sessionStorage.setItem('user', JSON.stringify(response.data.user));
+      if (response.status === 200) {
+        sessionStorage.setItem('user', JSON.stringify(response.data.user));
+       ;}
 
     
   }catch (error) {
@@ -61,7 +63,7 @@ console.log(error.response)
   };
 
   return (
-    <section className="login_page">
+    <section className="login_page" >
       <section className="login-form-section">
         <img
           src={login1}
@@ -109,7 +111,7 @@ console.log(error.response)
             <p>Login in with google</p>
           </button>
           <p className="register">
-            Don't have an account? <Link to="/signup">Register</Link>
+            Don't have an account? <Link to="/register">Register</Link>
           </p>
         </form>
       </section>

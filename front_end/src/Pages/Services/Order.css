@@ -1,0 +1,84 @@
+/* Order Component Styles */
+
+.order-container {
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #0f0f0f;
+  color: white;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #0f0f0f;
+}
+
+table th {
+  background-color: #f08080;
+}
+
+table td {
+  vertical-align: top;
+}
+
+.link {
+  color: blue;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.loading,
+.error {
+  margin-top: 20px;
+  padding: 10px;
+  text-align: center;
+  background-color: #ffe4e1;
+  border: 1px solid #f08080;
+  border-radius: 5px;
+}
+
+/* Responsive Styles */
+
+@media screen and (max-width: 768px) {
+  .order-container {
+    padding: 10px;
+  }
+
+  table th,
+  table td {
+    padding: 8px;
+  }
+}
+
+/* Mobile Styles */
+
+@media screen and (max-width: 480px) {
+  .order-container {
+    padding: 5px;
+    margin: 10px auto;
+  }
+
+  table th,
+  table td {
+    padding: 5px;
+    font-size: 12px;
+  }
+
+  .loading,
+  .error {
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 14px;
+  }
+}

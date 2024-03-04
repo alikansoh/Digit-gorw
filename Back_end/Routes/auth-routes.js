@@ -4,7 +4,9 @@ import passport from 'passport';
 const router = express.Router();
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
-  // Send the user data in the response
+  res.header('Access-Control-Allow-Origin', '*'); 
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+
   res.json({ message: 'Login successful', user: req.user });
 });
 
@@ -18,7 +20,6 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), (req, res) => {
-  // Successful authentication, redirect home.
   res.json({ message: 'Login successful', user: req.user });
 
   res.redirect('/');

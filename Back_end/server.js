@@ -26,10 +26,12 @@ app.use(express.json());
 //   credentials: true,
 // }));
 app.use(cors({
-  origin: '*', // Allow all origins
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], // Allowed methods
-  credentials: true, // Allow credentials
- }));
+  "origin": "*",
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  "preflightContinue": false,
+  "optionsSuccessStatus": 200
+ }
+ ));
 // Session middleware setup
 app.use(
   session({

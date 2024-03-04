@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import google from "../../assets/google.png";
-import mobileImage from "../../assets/login-mobile.png";
+import mobileImage from "../../assets/logo-navbar.png";
 import login1 from "../../assets/login.jpg";
 import instance from "../../api.jsx";
 import { Link } from "react-router-dom";
@@ -69,7 +69,7 @@ console.log(error.response)
           src={login1}
           className="login-img"
           alt=""
-          srcSet={`${mobileImage}  768w, ${login1}  1024w`}
+          srcSet={`${mobileImage}  768w, ${mobileImage}  1024w`}
           sizes="(max-width:  768px)  100vw,  1024px"
         />
 

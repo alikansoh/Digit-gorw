@@ -53,7 +53,7 @@ function Service() {
           setLoading(true);
           try {
             const response = await fetch(
-              `http://localhost:4000/api/user/${userId}`
+              `https://digit-gorw.onrender.com/api/user/${userId}`
             );
             if (response.ok) {
               const userData = await response.json();
@@ -82,7 +82,7 @@ function Service() {
 
   const fetchServices = async () => {
     try {
-      const response = await fetch("http://localhost:4000/api/service");
+      const response = await fetch("https://digit-gorw.onrender.com/api/service");
       if (response.ok) {
         const servicesData = await response.json();
         setServices(servicesData);
@@ -146,7 +146,7 @@ function Service() {
     setLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:4000/api/order", {
+      const response = await axios.post("https://digit-gorw.onrender.com/api/order", {
         user: user.user._id,
         services: selectedServiceId,
         quantity: quantity,

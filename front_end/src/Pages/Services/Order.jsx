@@ -12,7 +12,7 @@ function Order() {
   useEffect(() => {
     const fetchOrderData = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/order/orderbyuser/${userId}`);
+        const response = await axios.get(`https://digit-gorw.onrender.com/api/order/orderbyuser/${userId}`);
         setOrderData(response.data);
         if(response.data.length === 0){
           setError('No orders found for this user.');

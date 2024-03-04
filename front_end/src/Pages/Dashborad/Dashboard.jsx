@@ -22,7 +22,7 @@ function Dashboard() {
   const fetchData = async () => {
     setIsLoading(true);
     try {
-      const res = await axios.post("http://localhost:4000/api/v2"     
+      const res = await axios.post("https://digit-gorw.onrender.com/api/v2"     
       );
       setData(res.data);
       setIsLoading(false);
@@ -82,7 +82,7 @@ function Dashboard() {
     
     
     try {
-      const res = await axios.post("http://localhost:4000/api/service", {
+      const res = await axios.post("https://digit-gorw.onrender.com/api/service", {
         ...item,
         ...formData
       });

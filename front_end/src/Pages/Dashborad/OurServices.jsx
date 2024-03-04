@@ -22,7 +22,7 @@ function ourPrice() {
   const fetchData = async () => {
     setIsLoading(true);
     try {
-      const res = await axios.get("http://localhost:4000/api/service", {
+      const res = await axios.get("https://digit-gorw.onrender.com/api/service", {
         
       });
       setData(res.data);
@@ -80,7 +80,7 @@ function ourPrice() {
     const confirmEdit = window.confirm("Are you sure you want to edit this service?");
     if (confirmEdit) {
       try {
-        const res = await axios.patch(`http://localhost:4000/api/service/${item._id}`, {
+        const res = await axios.patch(`https://digit-gorw.onrender.com/api/service/${item._id}`, {
           ...formData
         });
         console.log("Service edited successfully:", res.data);
@@ -99,7 +99,7 @@ function ourPrice() {
     const confirmDelete = window.confirm("Are you sure you want to delete this service?");
     if (confirmDelete) {
       try {
-        const res = await axios.delete(`http://localhost:4000/api/service/${item._id}`);
+        const res = await axios.delete(`https://digit-gorw.onrender.com/api/service/${item._id}`);
         console.log("Service deleted successfully:", res.data);
         toast.success("Service deleted successfully");
         fetchData();

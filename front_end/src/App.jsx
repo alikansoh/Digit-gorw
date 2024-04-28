@@ -82,7 +82,7 @@ function App() {
           }
         />
         <Route
-          path="/services"
+          path="/ourservices"
           element={
             <ProtectedRoute>
               <OurServices />

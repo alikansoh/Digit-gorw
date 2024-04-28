@@ -139,7 +139,7 @@ function Home() {
                 <h3 className="card-forth">Instagram</h3>
               </section>
               <section className="forth-section-description">
-                <p>Buy Cheap and Instant TikTok Followers, Likes and Views</p>
+                <p>Buy Cheap and Real Instagram Followers, Likes and Views</p>
               </section>
             </section>
 
@@ -149,7 +149,7 @@ function Home() {
                 <h3 className="card-forth">Facebook</h3>
               </section>
               <section className="forth-section-description">
-                <p>Buy Cheap and Instant TikTok Followers, Likes and Views</p>
+                <p>Buy Cheapest and Real Facebook Followers, Likes and Views</p>
               </section>
             </section>
 
@@ -159,7 +159,7 @@ function Home() {
                 <h3 className="card-forth">Twitter</h3>
               </section>
               <section className="forth-section-description">
-                <p>Buy Cheap and Instant TikTok Followers, Likes and Views</p>
+                <p>Buy Cheap and Instant Twitter Followers, Likes and Views </p>
               </section>
             </section>
 
@@ -169,7 +169,7 @@ function Home() {
                 <h3 className="card-forth">Youtube</h3>
               </section>
               <section className="forth-section-description">
-                <p>Buy Cheap and Instant TikTok Followers, Likes and Views</p>
+                <p>Buy Cheap and Real YouTube Subscribers, Watch Hours Likes and Views</p>
               </section>
             </section>
 
@@ -179,7 +179,7 @@ function Home() {
                 <h3 className="card-forth">LinkedIn</h3>
               </section>
               <section className="forth-section-description">
-                <p>Buy Cheap and Instant TikTok Followers, Likes and Views</p>
+                <p>Buy Cheap and Instant LinkedIn Company and Profiles Followers</p>
               </section>
             </section>
 

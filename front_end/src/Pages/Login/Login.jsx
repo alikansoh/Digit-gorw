@@ -106,10 +106,7 @@ console.log(error.response)
           </div>
 
           <button className="login-btn" onClick={handleLogin}>Login</button>
-          <button type="button" className="login-btn" id="google-btn" onClick={handleGoogleLogin}>
-            <img src={google} className="google-img" alt="" />
-            <p>Login in with google</p>
-          </button>
+       
           <p className="register">
             Don't have an account? <Link to="/register">Register</Link>
           </p>

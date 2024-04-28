@@ -1,10 +1,6 @@
 import React from "react";
 import "./App.css";
-import {
-  BrowserRouter,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./Components/Navbar"; // Import the Navbar component
 import Login from "./Pages/Login/Login";
 import Home from "./Pages/Home/Home";
@@ -30,10 +26,10 @@ function App() {
         <Route
           path="/"
           element={
-            <ProtectedRoute>
+            <>
               <Navbar />
               <Home />
-            </ProtectedRoute>
+            </>
           }
         />
         <Route
@@ -45,24 +41,24 @@ function App() {
             </ProtectedRoute>
           }
         />
-         <Route
+        <Route
           path="/ContactUs"
           element={
-            <ProtectedRoute>
+            <>
               <Navbar />
               <ContactUs />
               <Footer />
-            </ProtectedRoute>
+            </>
           }
         />
         <Route
           path="/AboutUs"
           element={
-            <ProtectedRoute>
+            <>
               <Navbar />
               <AboutUs />
               <Footer />
-            </ProtectedRoute>
+            </>
           }
         />
         <Route
